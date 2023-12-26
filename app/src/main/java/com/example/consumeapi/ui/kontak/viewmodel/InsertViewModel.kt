@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.consumeapi.model.Kontak
 import com.example.consumeapi.repository.KontakRepository
 
 class InsertViewModel (private val kontakRepository: KontakRepository) : ViewModel() {
@@ -11,4 +12,12 @@ class InsertViewModel (private val kontakRepository: KontakRepository) : ViewMod
     var insertKontakState by mutableStateOf(InsertUiState())
         private set
 }
+
+
+data class InsertUiEvent(
+    val id: Int = 0,
+    val nama: String = "",
+    val email: String = "",
+    val nohp: String = "",
+)
 
