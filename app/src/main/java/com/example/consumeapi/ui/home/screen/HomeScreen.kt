@@ -151,6 +151,5 @@ fun KontakCard(
                 style = MaterialTheme.typography.titleMedium
             )
         }
-
     }
 }
