@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.consumeapi.ui.home.screen.DestinasiHome
 import com.example.consumeapi.ui.home.screen.HomeScreen
 import com.example.consumeapi.ui.kontak.screen.DestinasiEntry
+import com.example.consumeapi.ui.kontak.screen.EntryKontakScreen
 
 @Composable
 fun PengelolaHalaman(
@@ -27,6 +28,17 @@ fun PengelolaHalaman(
 
                 }
             )
+        }
+        composable(DestinasiEntry.route){
+            EntryKontakScreen(navigateBack = {
+                navController.navigate(
+                    DestinasiHome.route
+                ) {
+                    popUpTo(DestinasiHome.route){
+                        inclusive = true
+                    }
+                }
+            })
         }
     }
 }
