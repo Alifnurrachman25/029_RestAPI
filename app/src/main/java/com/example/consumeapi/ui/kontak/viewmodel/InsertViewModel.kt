@@ -1,5 +1,6 @@
 package com.example.consumeapi.ui.kontak.viewmodel
 
+import android.provider.ContactsContract.Intents.Insert
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -11,6 +12,10 @@ class InsertViewModel (private val kontakRepository: KontakRepository) : ViewMod
 
     var insertKontakState by mutableStateOf(InsertUiState())
         private set
+
+    fun updateInsertKontakState(insertUiEvent: InsertUiEvent){
+        insertKontakState = InsertUiState(insertUiEvent = insertUiEvent)
+    }
 }
 
 data class InsertUiState(
