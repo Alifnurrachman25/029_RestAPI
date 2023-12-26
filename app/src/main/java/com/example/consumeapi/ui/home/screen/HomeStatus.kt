@@ -48,7 +48,7 @@ fun HomeStatus(
         is KontakUIState.Success -> KontakLayout(
             kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth(),
             onDetailClick = {
-                onDetailClick(it.Id)
+                onDetailClick(it.id)
             },
             onDeleteClick = {
                 onDeleteClick(it)

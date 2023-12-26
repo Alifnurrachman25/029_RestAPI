@@ -21,13 +21,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.consumeapi.R
 import com.example.consumeapi.ui.home.screen.HomeScreen
+import com.example.consumeapi.ui.home.screen.HomeStatus
 import com.example.consumeapi.ui.home.viewmodel.HomeViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun KontakApp(
-    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    homeViewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    onDetailClick: (Int) -> Unit = {},
 ) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
@@ -42,8 +44,9 @@ fun KontakApp(
         ) {
 
             HomeScreen(
-                kontakUIState = homeViewModel.kontakUIState,
-                retryAction = homeViewModel::getKontak
+                navigateToItemEntry = {},
+                onDetailClick = onDetailClick,
+                viewModel = homeViewModel
             )
         }
     }
