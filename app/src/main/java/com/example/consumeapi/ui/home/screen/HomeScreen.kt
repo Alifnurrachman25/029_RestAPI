@@ -54,6 +54,10 @@ fun HomeScreen(
             retryAction = { viewModel.getKontak() },
             modifier = Modifier.padding(innerPadding),
             onDetailClick = onDetailClick,
+            onDeleteClick = {
+                viewModel.deleteKontak(it.Id)
+                viewModel.getKontak()
+            }
         )
     }
 }
