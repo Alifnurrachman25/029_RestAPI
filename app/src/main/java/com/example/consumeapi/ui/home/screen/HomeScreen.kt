@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -21,6 +22,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -105,6 +107,7 @@ fun KontakLayout(kontak: List<Kontak>, modifier: Modifier = Modifier) {
 @Composable
 fun KontakCard(
     kontak: Kontak,
+    onDeleteClick: (Kontak) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -118,6 +121,7 @@ fun KontakCard(
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = kontak.nama,
@@ -128,10 +132,19 @@ fun KontakCard(
                     imageVector = Icons.Default.Phone,
                     contentDescription = null,
                 )
-                Text(
-                    text = kontak.email,
-                    style = MaterialTheme.typography.titleMedium
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = kontak.email,
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Spacer(Modifier.weight(1f))
+                    IconButton(onClick = { onDeleteClick(kontak) }) {
+                        Icon(imageVector = Icons.Default.Delete, contentDescription = null)
+                    }
+                }
             }
             Text(
                 text = kontak.nohp,
